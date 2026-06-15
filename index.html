@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محمد برغود | مطوّر برمجيات متكامل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090F;
+      --surface: #0E1420;
+      --surface-2: #162030;
+      --teal: #00D4FF;
+      --teal-dim: rgba(0,212,255,0.10);
+      --coral: #FF5F3C;
+      --coral-dim: rgba(255,95,60,0.10);
+      --flutter: rgba(83,204,251,0.10);
+      --text: #EEF2F8;
+      --text-muted: #7B8BA8;
+      --border: rgba(255,255,255,0.07);
+      --glow: 0 0 40px rgba(0,212,255,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--teal-dim);
+      border: 1px solid rgba(0,212,255,0.25);
+      color: var(--teal);
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 6px 18px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+      direction: ltr;
+    }
+
+    .hero-name {
+      font-size: clamp(56px, 11vw, 104px);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #EEF2F8 35%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 2.5vw, 20px);
+      color: var(--text-muted);
+      margin-bottom: 44px;
+      font-weight: 400;
+    }
+
+    .hero-sub span { color: var(--teal); font-weight: 700; }
+
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 60px;
+      direction: ltr;
+    }
+
+    .pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    .pill.l { border-color: rgba(255,95,60,0.35); color: #FF7A5A; background: var(--coral-dim); }
+    .pill.f { border-color: rgba(83,204,251,0.35); color: #54CCFB; background: var(--flutter); }
+
+    .stats {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+    }
+
+    .stat-num {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--teal);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 88px 24px;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--teal);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      direction: ltr;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 4.5vw, 40px);
+      font-weight: 800;
+      margin-bottom: 52px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ── CARDS ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--teal-dim), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      border-color: rgba(0,212,255,0.28);
+      transform: translateY(-5px);
+      box-shadow: var(--glow);
+    }
+
+    .card:hover::after { opacity: 1; }
+
+    /* Flagship card — full width, two-column */
+    .card.flagship {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .card-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--teal);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      direction: ltr;
+    }
+
+    .card-name {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+      direction: ltr;
+    }
+
+    .tag {
+      background: var(--surface-2);
+      color: var(--text-muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      direction: ltr;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      padding: 7px 15px;
+      border: 1px solid rgba(0,212,255,0.28);
+      border-radius: 8px;
+      background: var(--teal-dim);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .link-btn:hover {
+      background: rgba(0,212,255,0.18);
+      border-color: var(--teal);
+    }
+
+    .live-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 6px #22C55E;
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* Flagship visual panel */
+    .flagship-panel {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 6px 0;
+    }
+
+    .plat-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plat-row:last-child { border-bottom: none; }
+
+    .plat-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: var(--teal-dim);
+      border: 1px solid rgba(0,212,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    .plat-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .plat-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Grade badge */
+    .grade-badge {
+      display: inline-block;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #22C55E;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+      direction: ltr;
+    }
+
+    /* ── SKILLS SECTION ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .skill-group-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      direction: ltr;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-list li {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      direction: ltr;
+    }
+
+    .skill-list li::before {
+      content: '▸';
+      color: var(--teal);
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 44px 24px;
+    }
+
+    .footer-name {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .footer-sub {
+      color: var(--text-muted);
+      font-size: 13px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .card.flagship {
+        grid-column: 1;
+        grid-template-columns: 1fr;
+      }
+      .stats { gap: 32px; }
+    }
+
+    @media (max-width: 480px) {
+      .stats { gap: 20px; }
+      .stat-num { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="badge">Full-Stack Developer · Laravel + Flutter</div>
+  <h1 class="hero-name">محمد برغود</h1>
+  <p class="hero-sub">مطوّر برمجيات متكامل · <span>+3 سنوات خبرة</span> · حلب، سوريا</p>
+
+  <div class="tech-pills">
+    <span class="pill l">Laravel</span>
+    <span class="pill l">PHP</span>
+    <span class="pill f">Flutter</span>
+    <span class="pill f">Dart</span>
+    <span class="pill">MySQL</span>
+    <span class="pill">REST API</span>
+    <span class="pill">Git</span>
+    <span class="pill">Linux</span>
+    <span class="pill">React</span>
+    <span class="pill">WebSockets</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">سنوات خبرة</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">مشاريع منجزة</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">منصات إنتاجية حية</div>
+    </div>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+<!-- ── PROJECTS ── -->
+<section class="section">
+  <div class="section-eyebrow">// Projects</div>
+  <h2 class="section-title">المشاريع البرمجية</h2>
+
+  <div class="grid">
+
+    <!-- FLAGSHIP: KFSHRC -->
+    <div class="card flagship">
+      <div>
+        <div class="card-type">Production Platforms · Saudi Arabia</div>
+        <h3 class="card-name">منصات KFSHRC التدريبية</h3>
+        <p class="card-desc">
+          ثلاث منصات تعليمية وتدريبية لمركز الملك فيصل التخصصي للأبحاث — أحد أبرز المراكز الطبية في المملكة العربية السعودية.
+          تضمّ إدارة المتدربين، أنظمة التقديم والقبول، بوابات التعلم الإلكتروني، وواجهات برمجية REST لتطبيقات الجوال.
+        </p>
+        <div class="tags">
+          <span class="tag">Laravel</span>
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">REST API</span>
+          <span class="tag">Flutter</span>
+          <span class="tag">Sanctum</span>
+          <span class="tag">Blade</span>
+        </div>
+        <div class="card-links">
+          <a href="https://lib.kfshrc.edu.sa" target="_blank" class="link-btn">
+            <span class="live-dot"></span> JAAP Platform
+          </a>
+          <a href="https://lstc.kfshrc.edu.sa" target="_blank" class="link-btn">
+            <span class="live-dot"></span> ETP Platform
+          </a>
+        </div>
+      </div>
+
+      <div class="flagship-panel">
+        <div class="plat-row">
+          <div class="plat-icon">🏥</div>
+          <div>
+            <div class="plat-name">JAAP · Joint Academic Affairs</div>
+            <div class="plat-desc">بوابة الشؤون الأكاديمية المشتركة</div>
+          </div>
+        </div>
+        <div class="plat-row">
+          <div class="plat-icon">📚</div>
+          <div>
+            <div class="plat-name">ETP · Educational Training</div>
+            <div class="plat-desc">منصة التدريب والتعليم الإلكتروني</div>
+          </div>
+        </div>
+        <div class="plat-row">
+          <div class="plat-icon">🎓</div>
+          <div>
+            <div class="plat-name">SAAP · Advanced Academic</div>
+            <div class="plat-desc">بوابة البرامج الأكاديمية المتقدمة</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GIGABITE -->
+    <div class="card">
+      <div class="card-type">Mobile App · Flutter + Laravel</div>
+      <div class="grade-badge">تقدير التخرج: 95 / 100 🏆</div>
+      <h3 class="card-name">GigaBite — تطبيق توصيل الطعام</h3>
+      <p class="card-desc">
+        تطبيق توصيل طعام متكامل طُوِّر كمشروع تخرج.
+        يتضمّن تطبيق عملاء بـ Flutter ولوحة إدارة كاملة، مع دعم التتبع الفوري، إدارة الطلبات، والدفع الإلكتروني.
+      </p>
+      <div class="tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">Laravel</span>
+        <span class="tag">Dart</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Bloc</span>
+        <span class="tag">MySQL</span>
+      </div>
+    </div>
+
+    <!-- TECHSHOP -->
+    <div class="card">
+      <div class="card-type">Web + Mobile · AI-Powered</div>
+      <h3 class="card-name">TechShop — متجر إلكتروني ذكي</h3>
+      <p class="card-desc">
+        منصة تجارة إلكترونية مع مساعد ذكاء اصطناعي (Gemini API)، دردشة دعم مباشرة بالوقت الفعلي عبر WebSockets، وإشعارات admin فورية.
+      </p>
+      <div class="tags">
+        <span class="tag">Laravel</span>
+        <span class="tag">Flutter</span>
+        <span class="tag">Gemini AI</span>
+        <span class="tag">Reverb</span>
+        <span class="tag">WebSockets</span>
+        <span class="tag">MySQL</span>
+      </div>
+    </div>
+
+    <!-- EDUBRIDGE -->
+    <div class="card">
+      <div class="card-type">Web Platform · E-Learning</div>
+      <h3 class="card-name">EduBridge — منصة تعليمية</h3>
+      <p class="card-desc">
+        منصة مدرسية إلكترونية شاملة مع تكامل Google Meet للحصص المباشرة، نظام امتحانات، إدارة واجبات، وإعداد DNS على Namecheap.
+      </p>
+      <div class="tags">
+        <span class="tag">Laravel 11</span>
+        <span class="tag">React 18</span>
+        <span class="tag">Google Meet API</span>
+        <span class="tag">MySQL</span>
+      </div>
+    </div>
+
+    <!-- MARSHMELLOW -->
+    <div class="card">
+      <div class="card-type">Web App · Booking System</div>
+      <h3 class="card-name">Marshmellow — حجز صالونات</h3>
+      <p class="card-desc">
+        منصة حجز خدمات صالونات التجميل مع جدولة أسبوعية للخبراء، دفع إلكتروني (Moyasar)، وتذكيرات تلقائية بالبريد.
+      </p>
+      <div class="tags">
+        <span class="tag">Laravel</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Moyasar</span>
+        <span class="tag">Gmail SMTP</span>
+      </div>
+      <div class="card-links" style="margin-top: 18px;">
+        <a href="https://marshmelloow.com" target="_blank" class="link-btn">
+          <span class="live-dot"></span> marshmelloow.com
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SKILLS ── -->
+<section class="section">
+  <div class="section-eyebrow">// Skills</div>
+  <h2 class="section-title">المهارات التقنية</h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Backend</div>
+      <ul class="skill-list">
+        <li>Laravel / PHP</li>
+        <li>REST API Design</li>
+        <li>Laravel Sanctum</li>
+        <li>WebSockets (Reverb)</li>
+        <li>MySQL / Eloquent ORM</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Mobile</div>
+      <ul class="skill-list">
+        <li>Flutter / Dart</li>
+        <li>Bloc State Management</li>
+        <li>REST API Integration</li>
+        <li>Dark Mode / Theming</li>
+        <li>Android & iOS</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Frontend</div>
+      <ul class="skill-list">
+        <li>React 18</li>
+        <li>HTML / CSS / JS</li>
+        <li>Blade Templates</li>
+        <li>RTL / Arabic UI</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools & DevOps</div>
+      <ul class="skill-list">
+        <li>Git / GitHub</li>
+        <li>Linux Server Admin</li>
+        <li>IIS / Nginx</li>
+        <li>Namecheap DNS</li>
+        <li>AI: Gemini API</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-name">محمد برغود</div>
+  <div class="footer-sub">Full-Stack Developer · Laravel & Flutter · Aleppo, Syria</div>
+</footer>
+
+</body>
+</html>
