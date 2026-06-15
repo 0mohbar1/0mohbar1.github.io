@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محمد برغود | مطوّر برمجيات متكامل</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <title>Mohammed Barghoud | Full-Stack Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #06090F;
@@ -20,18 +20,17 @@
       --border: rgba(255,255,255,0.07);
       --glow: 0 0 40px rgba(0,212,255,0.12);
     }
-
+ 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
+ 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Cairo', sans-serif;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
     }
-
+ 
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
@@ -44,7 +43,7 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     .hero::before {
       content: '';
       position: absolute;
@@ -54,7 +53,7 @@
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
-
+ 
     .badge {
       display: inline-block;
       background: var(--teal-dim);
@@ -66,79 +65,78 @@
       border-radius: 100px;
       letter-spacing: 0.5px;
       margin-bottom: 32px;
-      direction: ltr;
     }
-
+ 
     .hero-name {
-      font-size: clamp(56px, 11vw, 104px);
-      font-weight: 900;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 10vw, 96px);
+      font-weight: 700;
       line-height: 1.05;
       margin-bottom: 18px;
       background: linear-gradient(135deg, #EEF2F8 35%, var(--teal) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      letter-spacing: -1px;
     }
-
+ 
     .hero-sub {
       font-size: clamp(15px, 2.5vw, 20px);
       color: var(--text-muted);
       margin-bottom: 44px;
       font-weight: 400;
     }
-
-    .hero-sub span { color: var(--teal); font-weight: 700; }
-
+ 
+    .hero-sub span { color: var(--teal); font-weight: 600; }
+ 
     .tech-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
       margin-bottom: 60px;
-      direction: ltr;
     }
-
+ 
     .pill {
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
       padding: 6px 14px;
       border-radius: 6px;
     }
-
+ 
     .pill.l { border-color: rgba(255,95,60,0.35); color: #FF7A5A; background: var(--coral-dim); }
     .pill.f { border-color: rgba(83,204,251,0.35); color: #54CCFB; background: var(--flutter); }
-
+ 
     .stats {
       display: flex;
       gap: 60px;
       justify-content: center;
     }
-
+ 
     .stat-num {
-      font-size: 38px;
-      font-weight: 900;
-      color: var(--teal);
       font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--teal);
       line-height: 1;
     }
-
+ 
     .stat-label {
       font-size: 13px;
       color: var(--text-muted);
       margin-top: 6px;
     }
-
+ 
     /* ── SECTION ── */
     .section {
       max-width: 1140px;
       margin: 0 auto;
       padding: 88px 24px;
     }
-
+ 
     .section-eyebrow {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
@@ -146,27 +144,27 @@
       letter-spacing: 2.5px;
       text-transform: uppercase;
       margin-bottom: 14px;
-      direction: ltr;
     }
-
+ 
     .section-title {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(26px, 4.5vw, 40px);
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 52px;
     }
-
+ 
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
     }
-
+ 
     /* ── CARDS ── */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
       gap: 22px;
     }
-
+ 
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -176,7 +174,7 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     .card::after {
       content: '';
       position: absolute;
@@ -187,16 +185,15 @@
       border-radius: 16px;
       pointer-events: none;
     }
-
+ 
     .card:hover {
       border-color: rgba(0,212,255,0.28);
       transform: translateY(-5px);
       box-shadow: var(--glow);
     }
-
+ 
     .card:hover::after { opacity: 1; }
-
-    /* Flagship card — full width, two-column */
+ 
     .card.flagship {
       grid-column: 1 / -1;
       display: grid;
@@ -204,7 +201,7 @@
       gap: 36px;
       align-items: center;
     }
-
+ 
     .card-type {
       font-family: 'JetBrains Mono', monospace;
       font-size: 10px;
@@ -212,48 +209,45 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 10px;
-      direction: ltr;
     }
-
+ 
     .card-name {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 12px;
       line-height: 1.3;
     }
-
+ 
     .card-desc {
       font-size: 14px;
       color: var(--text-muted);
       line-height: 1.8;
       margin-bottom: 20px;
     }
-
+ 
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
       margin-bottom: 22px;
-      direction: ltr;
     }
-
+ 
     .tag {
       background: var(--surface-2);
       color: var(--text-muted);
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      font-weight: 500;
       padding: 4px 10px;
       border-radius: 4px;
     }
-
+ 
     .card-links {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      direction: ltr;
     }
-
+ 
     .link-btn {
       display: inline-flex;
       align-items: center;
@@ -269,12 +263,12 @@
       background: var(--teal-dim);
       transition: background 0.2s, border-color 0.2s;
     }
-
+ 
     .link-btn:hover {
       background: rgba(0,212,255,0.18);
       border-color: var(--teal);
     }
-
+ 
     .live-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
@@ -283,20 +277,20 @@
       animation: pulse 2s infinite;
       flex-shrink: 0;
     }
-
+ 
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50%       { opacity: 0.3; }
     }
-
-    /* Flagship visual panel */
+ 
+    /* Flagship panel */
     .flagship-panel {
       background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 6px 0;
     }
-
+ 
     .plat-row {
       display: flex;
       align-items: center;
@@ -304,9 +298,9 @@
       padding: 14px 20px;
       border-bottom: 1px solid var(--border);
     }
-
+ 
     .plat-row:last-child { border-bottom: none; }
-
+ 
     .plat-icon {
       width: 38px; height: 38px;
       border-radius: 9px;
@@ -318,21 +312,20 @@
       font-size: 17px;
       flex-shrink: 0;
     }
-
+ 
     .plat-name {
       font-family: 'JetBrains Mono', monospace;
       font-size: 12px;
       font-weight: 600;
       color: var(--teal);
     }
-
+ 
     .plat-desc {
       font-size: 12px;
       color: var(--text-muted);
       margin-top: 2px;
     }
-
-    /* Grade badge */
+ 
     .grade-badge {
       display: inline-block;
       background: rgba(34,197,94,0.12);
@@ -344,55 +337,94 @@
       padding: 4px 12px;
       border-radius: 100px;
       margin-bottom: 14px;
-      direction: ltr;
     }
-
-    /* ── SKILLS SECTION ── */
+ 
+    /* ── SKILLS ── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 16px;
     }
-
+ 
     .skill-group {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 20px;
     }
-
+ 
     .skill-group-title {
-      font-size: 13px;
-      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
       color: var(--teal);
+      letter-spacing: 1px;
+      text-transform: uppercase;
       margin-bottom: 12px;
-      font-family: 'Space Grotesk', sans-serif;
-      direction: ltr;
     }
-
-    .skill-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
+ 
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+ 
     .skill-list li {
       font-size: 13px;
       color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 8px;
-      direction: ltr;
     }
-
+ 
     .skill-list li::before {
       content: '▸';
       color: var(--teal);
       font-size: 10px;
       flex-shrink: 0;
     }
-
+ 
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+ 
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-decoration: none;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+ 
+    .contact-card:not(.no-link):hover {
+      border-color: rgba(0,212,255,0.3);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+ 
+    .contact-card.no-link { cursor: default; }
+ 
+    .contact-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+ 
+    .contact-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--teal);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+ 
+    .contact-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+ 
     /* ── FOOTER ── */
     footer {
       background: var(--surface);
@@ -400,28 +432,46 @@
       text-align: center;
       padding: 44px 24px;
     }
-
+ 
     .footer-name {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 6px;
     }
-
+ 
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+ 
+    .footer-link {
+      color: var(--teal);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(0,212,255,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+ 
+    .footer-link:hover { border-color: var(--teal); }
+ 
     .footer-sub {
       color: var(--text-muted);
       font-size: 13px;
-      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 8px;
     }
-
+ 
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
-      .card.flagship {
-        grid-column: 1;
-        grid-template-columns: 1fr;
-      }
+      .card.flagship { grid-column: 1; grid-template-columns: 1fr; }
       .stats { gap: 32px; }
     }
-
+ 
     @media (max-width: 480px) {
       .stats { gap: 20px; }
       .stat-num { font-size: 28px; }
@@ -429,13 +479,13 @@
   </style>
 </head>
 <body>
-
+ 
 <!-- ── HERO ── -->
 <header class="hero">
-  <div class="badge">Full-Stack Developer · Laravel + Flutter</div>
-  <h1 class="hero-name">محمد برغود</h1>
-  <p class="hero-sub">مطوّر برمجيات متكامل · <span>+3 سنوات خبرة</span> · حلب، سوريا</p>
-
+  <div class="badge">Laravel · Flutter · Full-Stack Developer</div>
+  <h1 class="hero-name">Mohammed Barghoud</h1>
+  <p class="hero-sub">Building production-grade web &amp; mobile apps · <span>3+ years experience</span> · Aleppo, Syria</p>
+ 
   <div class="tech-pills">
     <span class="pill l">Laravel</span>
     <span class="pill l">PHP</span>
@@ -448,40 +498,41 @@
     <span class="pill">React</span>
     <span class="pill">WebSockets</span>
   </div>
-
+ 
   <div class="stats">
     <div class="stat-item">
       <div class="stat-num">3+</div>
-      <div class="stat-label">سنوات خبرة</div>
+      <div class="stat-label">Years of Experience</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">5+</div>
-      <div class="stat-label">مشاريع منجزة</div>
+      <div class="stat-label">Projects Shipped</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">3</div>
-      <div class="stat-label">منصات إنتاجية حية</div>
+      <div class="stat-label">Live Production Platforms</div>
     </div>
   </div>
 </header>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── PROJECTS ── -->
 <section class="section">
   <div class="section-eyebrow">// Projects</div>
-  <h2 class="section-title">المشاريع البرمجية</h2>
-
+  <h2 class="section-title">Featured Work</h2>
+ 
   <div class="grid">
-
+ 
     <!-- FLAGSHIP: KFSHRC -->
     <div class="card flagship">
       <div>
         <div class="card-type">Production Platforms · Saudi Arabia</div>
-        <h3 class="card-name">منصات KFSHRC التدريبية</h3>
+        <h3 class="card-name">KFSHRC Training Platforms</h3>
         <p class="card-desc">
-          ثلاث منصات تعليمية وتدريبية لمركز الملك فيصل التخصصي للأبحاث — أحد أبرز المراكز الطبية في المملكة العربية السعودية.
-          تضمّ إدارة المتدربين، أنظمة التقديم والقبول، بوابات التعلم الإلكتروني، وواجهات برمجية REST لتطبيقات الجوال.
+          Three enterprise-grade educational and training platforms for King Faisal Specialist Hospital &amp; Research Centre —
+          one of Saudi Arabia's leading medical institutions. Covers trainee management, application &amp; enrollment flows,
+          e-learning portals, and REST APIs for mobile clients.
         </p>
         <div class="tags">
           <span class="tag">Laravel</span>
@@ -490,7 +541,7 @@
           <span class="tag">REST API</span>
           <span class="tag">Flutter</span>
           <span class="tag">Sanctum</span>
-          <span class="tag">Blade</span>
+          <span class="tag">Moyasar</span>
         </div>
         <div class="card-links">
           <a href="https://lib.kfshrc.edu.sa" target="_blank" class="link-btn">
@@ -501,40 +552,40 @@
           </a>
         </div>
       </div>
-
+ 
       <div class="flagship-panel">
         <div class="plat-row">
           <div class="plat-icon">🏥</div>
           <div>
             <div class="plat-name">JAAP · Joint Academic Affairs</div>
-            <div class="plat-desc">بوابة الشؤون الأكاديمية المشتركة</div>
+            <div class="plat-desc">Academic enrollment &amp; management portal</div>
           </div>
         </div>
         <div class="plat-row">
           <div class="plat-icon">📚</div>
           <div>
             <div class="plat-name">ETP · Educational Training</div>
-            <div class="plat-desc">منصة التدريب والتعليم الإلكتروني</div>
+            <div class="plat-desc">E-learning &amp; training management platform</div>
           </div>
         </div>
         <div class="plat-row">
           <div class="plat-icon">🎓</div>
           <div>
             <div class="plat-name">SAAP · Advanced Academic</div>
-            <div class="plat-desc">بوابة البرامج الأكاديمية المتقدمة</div>
+            <div class="plat-desc">Advanced academic programs portal</div>
           </div>
         </div>
       </div>
     </div>
-
+ 
     <!-- GIGABITE -->
     <div class="card">
       <div class="card-type">Mobile App · Flutter + Laravel</div>
-      <div class="grade-badge">تقدير التخرج: 95 / 100 🏆</div>
-      <h3 class="card-name">GigaBite — تطبيق توصيل الطعام</h3>
+      <div class="grade-badge">Graduation Grade: 95 / 100 🏆</div>
+      <h3 class="card-name">GigaBite — Food Delivery App</h3>
       <p class="card-desc">
-        تطبيق توصيل طعام متكامل طُوِّر كمشروع تخرج.
-        يتضمّن تطبيق عملاء بـ Flutter ولوحة إدارة كاملة، مع دعم التتبع الفوري، إدارة الطلبات، والدفع الإلكتروني.
+        Full-stack food delivery platform built solo as a graduation project.
+        Includes a Flutter customer app and a full admin dashboard, with real-time order tracking and push notifications.
       </p>
       <div class="tags">
         <span class="tag">Flutter</span>
@@ -545,13 +596,14 @@
         <span class="tag">MySQL</span>
       </div>
     </div>
-
+ 
     <!-- TECHSHOP -->
     <div class="card">
       <div class="card-type">Web + Mobile · AI-Powered</div>
-      <h3 class="card-name">TechShop — متجر إلكتروني ذكي</h3>
+      <h3 class="card-name">TechShop — Smart E-Commerce</h3>
       <p class="card-desc">
-        منصة تجارة إلكترونية مع مساعد ذكاء اصطناعي (Gemini API)، دردشة دعم مباشرة بالوقت الفعلي عبر WebSockets، وإشعارات admin فورية.
+        E-commerce platform with an AI assistant powered by Gemini API, real-time live support chat via WebSockets,
+        and instant admin notifications.
       </p>
       <div class="tags">
         <span class="tag">Laravel</span>
@@ -562,13 +614,14 @@
         <span class="tag">MySQL</span>
       </div>
     </div>
-
+ 
     <!-- EDUBRIDGE -->
     <div class="card">
       <div class="card-type">Web Platform · E-Learning</div>
-      <h3 class="card-name">EduBridge — منصة تعليمية</h3>
+      <h3 class="card-name">EduBridge — School Platform</h3>
       <p class="card-desc">
-        منصة مدرسية إلكترونية شاملة مع تكامل Google Meet للحصص المباشرة، نظام امتحانات، إدارة واجبات، وإعداد DNS على Namecheap.
+        Comprehensive school management platform with Google Meet integration for live classes,
+        an exam system, and homework management.
       </p>
       <div class="tags">
         <span class="tag">Laravel 11</span>
@@ -577,13 +630,14 @@
         <span class="tag">MySQL</span>
       </div>
     </div>
-
+ 
     <!-- MARSHMELLOW -->
     <div class="card">
       <div class="card-type">Web App · Booking System</div>
-      <h3 class="card-name">Marshmellow — حجز صالونات</h3>
+      <h3 class="card-name">Marshmellow — Salon Booking</h3>
       <p class="card-desc">
-        منصة حجز خدمات صالونات التجميل مع جدولة أسبوعية للخبراء، دفع إلكتروني (Moyasar)، وتذكيرات تلقائية بالبريد.
+        Beauty salon booking platform with expert weekly scheduling, electronic payments via Moyasar,
+        and automated email reminders.
       </p>
       <div class="tags">
         <span class="tag">Laravel</span>
@@ -591,23 +645,23 @@
         <span class="tag">Moyasar</span>
         <span class="tag">Gmail SMTP</span>
       </div>
-      <div class="card-links" style="margin-top: 18px;">
+      <div class="card-links" style="margin-top:18px;">
         <a href="https://marshmelloow.com" target="_blank" class="link-btn">
           <span class="live-dot"></span> marshmelloow.com
         </a>
       </div>
     </div>
-
+ 
   </div>
 </section>
-
+ 
 <div class="divider"></div>
-
+ 
 <!-- ── SKILLS ── -->
 <section class="section">
   <div class="section-eyebrow">// Skills</div>
-  <h2 class="section-title">المهارات التقنية</h2>
-
+  <h2 class="section-title">Technical Stack</h2>
+ 
   <div class="skills-grid">
     <div class="skill-group">
       <div class="skill-group-title">Backend</div>
@@ -625,8 +679,8 @@
         <li>Flutter / Dart</li>
         <li>Bloc State Management</li>
         <li>REST API Integration</li>
-        <li>Dark Mode / Theming</li>
-        <li>Android & iOS</li>
+        <li>Push Notifications</li>
+        <li>Android &amp; iOS</li>
       </ul>
     </div>
     <div class="skill-group">
@@ -639,23 +693,71 @@
       </ul>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Tools & DevOps</div>
+      <div class="skill-group-title">Tools &amp; DevOps</div>
       <ul class="skill-list">
         <li>Git / GitHub</li>
         <li>Linux Server Admin</li>
         <li>IIS / Nginx</li>
-        <li>Namecheap DNS</li>
-        <li>AI: Gemini API</li>
+        <li>Postman / Bruno</li>
+        <li>Gemini AI API</li>
       </ul>
     </div>
   </div>
 </section>
-
+ 
+<!-- ── CONTACT ── -->
+<div class="divider"></div>
+ 
+<section class="section">
+  <div class="section-eyebrow">// Contact</div>
+  <h2 class="section-title">Get In Touch</h2>
+ 
+  <div class="contact-grid">
+ 
+    <a href="mailto:mohbar345@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-label">Email</div>
+      <div class="contact-value">mohbar345@gmail.com</div>
+    </a>
+ 
+    <a href="tel:+963967796366" class="contact-card">
+      <div class="contact-icon">📞</div>
+      <div class="contact-label">Phone</div>
+      <div class="contact-value">+963 967 796 366</div>
+    </a>
+ 
+    <a href="https://linkedin.com/in/mohammed-barghoud-a9b67732b" target="_blank" class="contact-card">
+      <div class="contact-icon">💼</div>
+      <div class="contact-label">LinkedIn</div>
+      <div class="contact-value">mohammed-barghoud</div>
+    </a>
+ 
+    <a href="https://github.com/0mohbar1" target="_blank" class="contact-card">
+      <div class="contact-icon">🐙</div>
+      <div class="contact-label">GitHub</div>
+      <div class="contact-value">0mohbar1</div>
+    </a>
+ 
+    <div class="contact-card no-link">
+      <div class="contact-icon">📍</div>
+      <div class="contact-label">Location</div>
+      <div class="contact-value">Aleppo, Syria</div>
+    </div>
+ 
+    <div class="contact-card no-link">
+      <div class="contact-icon">🟢</div>
+      <div class="contact-label">Availability</div>
+      <div class="contact-value">Open to opportunities</div>
+    </div>
+ 
+  </div>
+</section>
+ 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-name">محمد برغود</div>
-  <div class="footer-sub">Full-Stack Developer · Laravel & Flutter · Aleppo, Syria</div>
+  <div class="footer-name">Mohammed Barghoud</div>
+  <div class="footer-sub">Full-Stack Developer · Laravel &amp; Flutter · Aleppo, Syria</div>
 </footer>
-
+ 
 </body>
 </html>
